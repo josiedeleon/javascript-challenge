@@ -1,14 +1,23 @@
-// from data.js
-var tableData = data;
-console.log(tableData);
+// Assign the data from data.js to a descriptive variable
+var table = data;
 
-// body table
-var tbody = d3.select("tbody");
-console.log(tbody);
+// set reference to the table body
+var tableBody = d3.select("tbody");
 
-// column values
+// Set UFO sighting value for each column
+table.forEach(function(ufoSighting) {
+    console.log(ufoSighting);
 
-tableData.forEach(function(sighting) {
-    console.log(sighting); 
+//Add table row for each UFO sighting
+    var row = tableBody.append("tr");
 
-})
+//Print each UFO sighting value
+Object.entries(ufoSighting).forEach(function([key, value]) {
+    console.log(key, value);
+    
+//Add cell to row for each value
+    var cell = row.append("td");
+    cell.text(value);
+});
+
+});
